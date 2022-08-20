@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PembacaController;
+use App\Http\Controllers\PenulisController;
 use App\Http\Controllers\UseraccessController;
 
 /*
@@ -27,6 +29,11 @@ Route::get('/coba',function(){
 // admin
 Route::post('/admin/add', [AdminController::class,'store']);
 
-
 // useraccess
 Route::post('useraccess/add', [UseraccessController::class,'store']);
+
+// pembaca
+Route::post('pembaca/add', [PembacaController::class,'store']);
+
+// penulis
+Route::post('penulis/add', [PenulisController::class,'store']);

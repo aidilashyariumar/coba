@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class admin extends Model
+class penulis extends Model
 {
     use HasFactory;
 
@@ -13,6 +13,7 @@ class admin extends Model
         
         'id_useraccess',
         'name',
+        'email',
         'foto',
         'telepon'
     ];
