@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UseraccessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,9 @@ Route::get('/coba',function(){
     return 'coba';
 });
 
+// admin
+Route::post('/admin/add', [AdminController::class,'store']);
 
-Route::post('/admin/all', [AdminController::class,'store']);
+
+// useraccess
+Route::post('useraccess/add', [UseraccessController::class,'store']);
