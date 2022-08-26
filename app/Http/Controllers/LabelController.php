@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\penulis;
+use App\Models\label;
 use Illuminate\Http\Request;
 
-class PenulisController extends Controller
+class LabelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,27 +33,22 @@ class PenulisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(penulis $penulis,Request $request)
+    public function store(label $label,Request $request)
     {
-        $penulis = new penulis;
+        $label = new $label;
 
-        $penulis->id_useraccess = $request->id_useraccess;
-        $penulis->name = $request->name;
-        $penulis->email = $request->email;
-        $penulis->foto = $request->foto;
-        $penulis->telepon = $request->telepon;
+        $label->nama = $request->nama;
 
-        $penulis->save();
-
+        $label->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\label  $label
      * @return \Illuminate\Http\Response
      */
-    public function show(penulis $penulis)
+    public function show(label $label)
     {
         //
     }
@@ -61,10 +56,10 @@ class PenulisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\label  $label
      * @return \Illuminate\Http\Response
      */
-    public function edit(penulis $penulis)
+    public function edit(label $label)
     {
         //
     }
@@ -73,10 +68,10 @@ class PenulisController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\label  $label
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, penulis $penulis)
+    public function update(Request $request, label $label)
     {
         //
     }
@@ -84,10 +79,10 @@ class PenulisController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\label  $label
      * @return \Illuminate\Http\Response
      */
-    public function destroy(penulis $penulis)
+    public function destroy(label $label)
     {
         //
     }

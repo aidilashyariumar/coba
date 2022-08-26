@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\penulis;
+use App\Models\komentar;
 use Illuminate\Http\Request;
 
-class PenulisController extends Controller
+class KomentarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,27 +33,24 @@ class PenulisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(penulis $penulis,Request $request)
+    public function store(komentar $komentar,Request $request)
     {
-        $penulis = new penulis;
+        $komentar = new komentar;
 
-        $penulis->id_useraccess = $request->id_useraccess;
-        $penulis->name = $request->name;
-        $penulis->email = $request->email;
-        $penulis->foto = $request->foto;
-        $penulis->telepon = $request->telepon;
+        $komentar->id_tulisan = $request->id_tulisan;
+        $komentar->id_pembaca = $request->id_pembaca;
+        $komentar->isi = $request->isi;
 
-        $penulis->save();
-
+        $komentar->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\komentar  $komentar
      * @return \Illuminate\Http\Response
      */
-    public function show(penulis $penulis)
+    public function show(komentar $komentar)
     {
         //
     }
@@ -61,10 +58,10 @@ class PenulisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\komentar  $komentar
      * @return \Illuminate\Http\Response
      */
-    public function edit(penulis $penulis)
+    public function edit(komentar $komentar)
     {
         //
     }
@@ -73,10 +70,10 @@ class PenulisController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\komentar  $komentar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, penulis $penulis)
+    public function update(Request $request, komentar $komentar)
     {
         //
     }
@@ -84,10 +81,10 @@ class PenulisController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\komentar  $komentar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(penulis $penulis)
+    public function destroy(komentar $komentar)
     {
         //
     }

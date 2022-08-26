@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\penulis;
+use App\Models\tulisan;
 use Illuminate\Http\Request;
 
-class PenulisController extends Controller
+class TulisanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,27 +33,27 @@ class PenulisController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(penulis $penulis,Request $request)
+    public function store(tulisan $tulisan,Request $request)
     {
-        $penulis = new penulis;
+        $tulisan = new $tulisan;
 
-        $penulis->id_useraccess = $request->id_useraccess;
-        $penulis->name = $request->name;
-        $penulis->email = $request->email;
-        $penulis->foto = $request->foto;
-        $penulis->telepon = $request->telepon;
+        $tulisan->id_penulis = $request->id_penulis;
+        $tulisan->id_label = $request->id_label;
+        $tulisan->judul = $request->judul;
+        $tulisan->isi = $request->isi;
+        $tulisan->gambar = $request->gambar;
+        $tulisan->status = $request->status;
 
-        $penulis->save();
-
+        $tulisan->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\tulisan  $tulisan
      * @return \Illuminate\Http\Response
      */
-    public function show(penulis $penulis)
+    public function show(tulisan $tulisan)
     {
         //
     }
@@ -61,10 +61,10 @@ class PenulisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\tulisan  $tulisan
      * @return \Illuminate\Http\Response
      */
-    public function edit(penulis $penulis)
+    public function edit(tulisan $tulisan)
     {
         //
     }
@@ -73,10 +73,10 @@ class PenulisController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\tulisan  $tulisan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, penulis $penulis)
+    public function update(Request $request, tulisan $tulisan)
     {
         //
     }
@@ -84,10 +84,10 @@ class PenulisController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\penulis  $penulis
+     * @param  \App\Models\tulisan  $tulisan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(penulis $penulis)
+    public function destroy(tulisan $tulisan)
     {
         //
     }
