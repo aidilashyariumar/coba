@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ResponseController as Reply;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -15,7 +16,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $admin = admin::all();
+        return $admin;
     }
 
     /**
@@ -42,12 +44,14 @@ class AdminController extends Controller
 
         $admin->id_useraccess = $request->id_useraccess;
         $admin->name = $request->name;
-        $admin->foto = $request->foto;
+        $admin->foto = $request->file('foto')->store('blog-photo');
         $admin->telepon = $request->telepon;
 
         $admin->save();
 
-        return Reply::reply(200, true, $admin, 'Data berhasil ditambahkan');
+
+       return response()->json($admin);
+        // return Reply::reply(200, true, $admin, 'Data berhasil ditambahkan');
     }
 
     /**
@@ -67,10 +71,7 @@ class AdminController extends Controller
      * @param  \App\Models\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(admin $admin)
-    {
-        //
-    }
+   
 
     /**
      * Update the specified resource in storage.
@@ -79,9 +80,22 @@ class AdminController extends Controller
      * @param  \App\Models\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, admin $admin)
+    public function update(Request $request,$id)
     {
-        //
+        
+        $admin = admin::find($id);
+        
+        $old_img = $admin->foto;
+        Storage::delete($old_img);
+        $admin->id_useraccess = $request->id_useraccess;
+        $admin->name = $request->name;
+        $admin->foto = $request->file('foto')->store('blog-photo');
+        $admin->telepon = $request->telepon;
+
+        $admin->update();
+
+        return response()->json($admin);
+
     }
 
     /**
@@ -90,8 +104,17 @@ class AdminController extends Controller
      * @param  \App\Models\admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(admin $admin)
+    public function destroy($id)
     {
-        //
+       $admin = admin::find($id);
+    
+        if(!$admin){
+            return response()->json(['message' => "The user with {$id} doesn't exist"], 404);
+        }
+        
+        $admin->delete();
+
+        return response()->json(['data' => "The user with with id {$id} has been deleted"], 200);
+    
     }
 }

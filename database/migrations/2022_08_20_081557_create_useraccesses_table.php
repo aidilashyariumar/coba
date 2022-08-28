@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('useraccesses', function (Blueprint $table) {
             $table->id();
             $table->string('username',30);
-            $table->string('username',50);
+            $table->string('password',50);
             $table->string('tipe_user',10);
             $table->timestamps();
         });

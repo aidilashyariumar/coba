@@ -58,7 +58,7 @@ class UseraccessController extends Controller
      */
     public function show(useraccess $useraccess)
     {
-        //
+        
     }
 
     /**

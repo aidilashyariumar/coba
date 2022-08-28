@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('id_label');
             $table->text('judul');
             $table->text('isi');
-            $table->string('isi',255);
             $table->string('gambar',255);
             $table->string('status',255);
             
