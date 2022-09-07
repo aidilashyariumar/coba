@@ -46,7 +46,8 @@ class PembacaController extends Controller
 
         $pembaca->save();
 
-        return Reply::reply(200, true, $pembaca, 'Data berhasil ditambahkan');
+        // return Reply::reply(200, true, $pembaca, 'Data berhasil ditambahkan');
+        return response()->json($pembaca);
     }
 
     /**
@@ -78,9 +79,19 @@ class PembacaController extends Controller
      * @param  \App\Models\pembaca  $pembaca
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pembaca $pembaca)
+    public function update(Request $request, $id)
     {
-        //
+        $pembaca = pembaca::find($id);
+
+        $pembaca->id_useraccess = $request->id_useraccess;
+        $pembaca->name = $request->name;
+        $pembaca->email = $request->email;
+        $pembaca->foto = $request->foto;
+        $pembaca->telepon = $request->telepon;
+
+        $pembaca->save();
+
+        return response()->json($pembaca);
     }
 
     /**
@@ -89,8 +100,16 @@ class PembacaController extends Controller
      * @param  \App\Models\pembaca  $pembaca
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pembaca $pembaca)
+    public function destroy($id)
     {
-        //
+        $pembaca = pembaca::find($id);
+    
+        if(!$pembaca){
+            return response()->json(['message' => "The user with {$id} doesn't exist"], 404);
+        }
+        
+        $pembaca->delete();
+
+        return response()->json(['data' => "The user with with id {$id} has been deleted"], 200);
     }
 }

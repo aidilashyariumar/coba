@@ -73,9 +73,16 @@ class KomentarController extends Controller
      * @param  \App\Models\komentar  $komentar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, komentar $komentar)
+    public function update(Request $request, $id)
     {
-        //
+        $komentar = komentar::find($id);
+
+        
+        $komentar->id_tulisan = $request->id_tulisan;
+        $komentar->id_pembaca = $request->id_pembaca;
+        $komentar->isi = $request->isi;
+
+        $komentar->save();
     }
 
     /**
@@ -84,8 +91,16 @@ class KomentarController extends Controller
      * @param  \App\Models\komentar  $komentar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(komentar $komentar)
+    public function destroy(komentar $id)
     {
-        //
+        $komentar = komentar::find($id);
+    
+        if(!$komentar){
+            return response()->json(['message' => "The user with {$id} doesn't exist"], 404);
+        }
+        
+        $komentar->delete();
+
+        return response()->json(['data' => "The user with with id {$id} has been deleted"], 200);
     }
 }
